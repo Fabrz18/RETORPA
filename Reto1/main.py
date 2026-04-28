@@ -1,5 +1,5 @@
 from pywinauto import Application
-import pyautogui
+import pyautogui, subprocess
 import time
 
 def espaciador():
@@ -30,14 +30,23 @@ def menu_notepad():
         print("Opción no válida. Intente de nuevo.")
         menu_notepad()
 
+def abrir_chrome():
+    subprocess.Popen(['start', 'chrome', "https://www.bitraid.lat/"], shell=True)
+    time.sleep(2)
+    pyautogui.hotkey('ctrl', 'a')
+
 def menu():
     print("1. Abrir Notepad (Ejecuta automatización en notepad)")
-    print("2. Salir \ Cerrar programa")
+    print("2. Abrir Chrome (Ejecuta automatización en chrome)")
+    print("3. Salir \ Cerrar programa")
     choice = input("Seleccione una opción: ")
     if choice == "1":
         espaciador()
         menu_notepad()
     elif choice == "2":
+        espaciador()
+        abrir_chrome()
+    elif choice == "3":
         print("Saliendo...")
     else:
         print("Opción no válida. Intente de nuevo.")
