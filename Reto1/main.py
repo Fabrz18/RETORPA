@@ -14,6 +14,9 @@ def abrir_notepad(message):
     app.window(title_re="Sin título")
 
     pyautogui.write(message)
+    pyautogui.hotkey('ctrl', 's')
+    pyautogui.hotkey('enter')
+
 
 def menu_notepad():
     print("1. Escribir mensaje en Notepad")
@@ -25,7 +28,12 @@ def menu_notepad():
         abrir_notepad(message)
 
     elif choice == "2":
-        abrir_notepad("Hello world! This is a predefined message.")
+        message = """
+        Automatic tittle: "Hello world! This is a predefined message.
+        You can edit this message in the code if you want to change it.
+        Review my github: Fabrz18
+        """
+        abrir_notepad(message)
     else:
         print("Opción no válida. Intente de nuevo.")
         menu_notepad()
